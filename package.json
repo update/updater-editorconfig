@@ -1,0 +1,36 @@
+{
+  "name": "update-editorconfig",
+  "description": "Update an existing editorconfig config file, or if one does not exist it will add one using your saved config defaults.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/update-editorconfig",
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "repository": "jonschlinkert/update-editorconfig",
+  "bugs": "https://github.com/jonschlinkert/update-editorconfig/issues",
+  "license": "MIT",
+  "files": [
+    "updatefile.js"
+  ],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "extend-shallow": "^2.0.1"
+  },
+  "keywords": [
+    "editorconfig",
+    "update"
+  ],
+  "verb": {
+    "related": {
+      "list": []
+    }
+  },
+  "update": {
+    "options": {
+      "foo": "bar"
+    }
+  }
+}
