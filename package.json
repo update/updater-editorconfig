@@ -1,15 +1,22 @@
 {
-  "name": "update-editorconfig",
+  "name": "updater-editorconfig",
   "description": "Update an existing editorconfig config file, or if one does not exist it will add one using your saved config defaults.",
   "version": "0.1.0",
-  "homepage": "https://github.com/jonschlinkert/update-editorconfig",
+  "homepage": "https://github.com/update/updater-editorconfig",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
-  "repository": "jonschlinkert/update-editorconfig",
-  "bugs": "https://github.com/jonschlinkert/update-editorconfig/issues",
+  "repository": "update/updater-editorconfig",
+  "bugs": {
+    "url": "https://github.com/update/updater-editorconfig/issues"
+  },
   "license": "MIT",
   "files": [
+    "index.js",
+    "LICENSE",
+    "README.md",
+    "templates",
     "updatefile.js"
   ],
+  "main": "index.js",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -17,20 +24,51 @@
     "test": "mocha"
   },
   "dependencies": {
-    "extend-shallow": "^2.0.1"
+    "is-valid-app": "^0.2.0"
+  },
+  "devDependencies": {
+    "delete": "^0.3.2",
+    "gulp-format-md": "^0.1.9",
+    "mocha": "^2.5.3",
+    "npm-install-global": "^0.1.2",
+    "update": "^0.5.5"
   },
   "keywords": [
     "editorconfig",
-    "update"
+    "fix",
+    "lint",
+    "linter",
+    "maintain",
+    "plugin",
+    "plugins",
+    "up-to-date",
+    "update",
+    "update-plugin",
+    "update-updater",
+    "updater",
+    "updaterplugin"
   ],
   "verb": {
     "related": {
-      "list": []
-    }
-  },
-  "update": {
-    "options": {
-      "foo": "bar"
-    }
+      "list": [
+        "update"
+      ]
+    },
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [
+      "update",
+      "verb",
+      "verb-readme-generator"
+    ]
   }
 }
