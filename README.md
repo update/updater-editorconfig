@@ -1,4 +1,4 @@
-# updater-editorconfig [![NPM version](https://img.shields.io/npm/v/updater-editorconfig.svg?style=flat)](https://www.npmjs.com/package/updater-editorconfig) [![NPM downloads](https://img.shields.io/npm/dm/updater-editorconfig.svg?style=flat)](https://npmjs.org/package/updater-editorconfig)
+# updater-editorconfig [![NPM version](https://img.shields.io/npm/v/updater-editorconfig.svg?style=flat)](https://www.npmjs.com/package/updater-editorconfig) [![NPM downloads](https://img.shields.io/npm/dm/updater-editorconfig.svg?style=flat)](https://npmjs.org/package/updater-editorconfig) [![Build Status](https://img.shields.io/travis/update/updater-editorconfig.svg?style=flat)](https://travis-ci.org/update/updater-editorconfig)
 
 Update an existing editorconfig config file, or if one does not exist it will add one using your saved config defaults.
 
@@ -62,7 +62,7 @@ $ update editorconfig
 
 **What will happen?**
 
-This updater's `default` task will replace the `.editorconfig` file in the current working directory with either `~/templates/_editorconfig` (defined by you in user home), or [templates/_editorconfig](templates/_editorconfig) if a template does not exist in user home.
+This updater's `default` task will replace the `.editorconfig` file in the current working directory with either `~/templates/_editorconfig` (defined by you in user home), or if a template does not exist in user home the [default template](templates/_editorconfig) will be used.
 
 ## Tasks
 
