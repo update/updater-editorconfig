@@ -1,6 +1,6 @@
 {
   "name": "updater-editorconfig",
-  "description": "Update an existing editorconfig config file, or if one does not exist it will add one using your saved config defaults.",
+  "description": "Update or add .editorconfig in the current working directory. Will use a custom template if supplied.",
   "version": "0.1.0",
   "homepage": "https://github.com/update/updater-editorconfig",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",

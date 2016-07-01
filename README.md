@@ -1,6 +1,6 @@
 # updater-editorconfig [![NPM version](https://img.shields.io/npm/v/updater-editorconfig.svg?style=flat)](https://www.npmjs.com/package/updater-editorconfig) [![NPM downloads](https://img.shields.io/npm/dm/updater-editorconfig.svg?style=flat)](https://npmjs.org/package/updater-editorconfig) [![Build Status](https://img.shields.io/travis/update/updater-editorconfig.svg?style=flat)](https://travis-ci.org/update/updater-editorconfig)
 
-Update an existing editorconfig config file, or if one does not exist it will add one using your saved config defaults.
+Update or add .editorconfig in the current working directory. Will use a custom template if supplied.
 
 ## TOC
 
