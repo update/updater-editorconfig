@@ -7,7 +7,6 @@ var isValid = require('is-valid-app');
 
 module.exports = function(app, base, env) {
   if (!isValid(app, 'updater-editorconfig')) return;
-  //var src = path.resolve.bind(path, __dirname, 'templates');
 
   var src = path.join( os.homedir(), './templates', '_editorconfig');
   if (!fs.existsSync( src )) {
@@ -25,9 +24,6 @@ module.exports = function(app, base, env) {
    */
 
   app.task('editorconfig', function() {
-
-    console.log('app.options.dest', app.options.dest);
-    console.log('app.cwd', app.cwd);
 
     return app.copy( src, function(file) {
       file.basename = '.editorconfig';
