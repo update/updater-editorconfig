@@ -8,7 +8,7 @@ var isValid = require('is-valid-app');
 module.exports = function(app, base, env) {
   if (!isValid(app, 'updater-editorconfig')) return;
 
-  var src = path.join( os.homedir(), './templates', '_editorconfig');
+  var src = path.join( os.homedir(), './.templates', '_editorconfig');
   if (!fs.existsSync( src )) {
     src = path.join( __dirname, 'templates/_editorconfig');
   }
