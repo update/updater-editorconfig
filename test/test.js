@@ -7,15 +7,16 @@ var assert = require('assert');
 var update = require('update');
 var npm = require('npm-install-global');
 var del = require('delete');
-var updater = require('./');
+var updater = require('..');
 var app;
 
-var cwd = path.resolve.bind(path, __dirname, 'actual');
+var fixtures = path.resolve.bind(path, __dirname, 'fixtures');
+var actual = path.resolve.bind(path, __dirname, 'actual');
 
 function exists(name, cb) {
   return function(err) {
     if (err) return cb(err);
-    var filepath = cwd(name);
+    var filepath = actual(name);
     fs.stat(filepath, function(err, stat) {
       if (err) return cb(err);
       assert(stat);
@@ -33,8 +34,8 @@ describe('updater-editorconfig', function() {
 
   beforeEach(function() {
     app = update({silent: true});
-    app.cwd = cwd();
-    app.option('dest', cwd());
+    app.cwd = actual();
+    app.option('dest', actual());
   });
 
   describe('plugin', function() {
@@ -143,8 +144,7 @@ describe('updater-editorconfig', function() {
       app
         .register('foo', updater)
         .register('bar', updater)
-        .register('baz', updater)
-
+        .register('baz', updater);
       app.update('foo.bar.baz', exists('.editorconfig', cb));
     });
   });
