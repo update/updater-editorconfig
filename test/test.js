@@ -10,17 +10,26 @@ var del = require('delete');
 var updater = require('..');
 var app;
 
+var cwd = path.resolve.bind(path, process.cwd());
 var fixtures = path.resolve.bind(path, __dirname, 'fixtures');
 var actual = path.resolve.bind(path, __dirname, 'actual');
 
-function exists(name, cb) {
+function exists(name, re, cb) {
+  if (typeof re === 'function') {
+    cb = re;
+    re = new RegExp(/./);
+  }
+
   return function(err) {
     if (err) return cb(err);
     var filepath = actual(name);
+
     fs.stat(filepath, function(err, stat) {
       if (err) return cb(err);
       assert(stat);
-      del(path.dirname(filepath), cb);
+      var str = fs.readFileSync(filepath, 'utf8');
+      assert(re.test(str));
+      del(filepath, cb);
     });
   };
 }
@@ -34,61 +43,32 @@ describe('updater-editorconfig', function() {
 
   beforeEach(function() {
     app = update({silent: true});
+    app.options.srcBase = fixtures();
     app.cwd = actual();
     app.option('dest', actual());
   });
 
-  describe('plugin', function() {
-    it('should only register the plugin once', function(cb) {
-      var count = 0;
-      app.on('plugin', function(name) {
-        if (name === 'updater-editorconfig') {
-          count++;
-        }
-      });
+  describe('tasks', function() {
+    beforeEach(function() {
       app.use(updater);
-      app.use(updater);
-      app.use(updater);
-      assert.equal(count, 1);
-      cb();
-    });
-
-    it('should extend tasks onto the instance', function() {
-      app.use(updater);
-      assert(app.tasks.hasOwnProperty('default'));
-      assert(app.tasks.hasOwnProperty('editorconfig'));
     });
 
     it('should run the `default` task with .build', function(cb) {
-      app.use(updater);
       app.build('default', exists('.editorconfig', cb));
     });
 
     it('should run the `default` task with .update', function(cb) {
-      app.use(updater);
       app.update('default', exists('.editorconfig', cb));
-    });
-
-    it('should run the `editorconfig` task with .build', function(cb) {
-      app.use(updater);
-      app.build('editorconfig', exists('.editorconfig', cb));
-    });
-
-    it('should run the `editorconfig` task with .update', function(cb) {
-      app.use(updater);
-      app.update('editorconfig', exists('.editorconfig', cb));
     });
   });
 
   if (!process.env.CI && !process.env.TRAVIS) {
     describe('updater (CLI)', function() {
       it('should run the default task using the `updater-editorconfig` name', function(cb) {
-        app.use(updater);
         app.update('updater-editorconfig', exists('.editorconfig', cb));
       });
 
-      it('should run the default task using the `editorconfig` updater alias', function(cb) {
-        app.use(updater);
+      it('should run the default task using the `updater` updater alias', function(cb) {
         app.update('editorconfig', exists('.editorconfig', cb));
       });
     });
