@@ -1,6 +1,6 @@
 {
   "name": "updater-editorconfig",
-  "description": "Update or add a `.editorconfig` in the current working directory using a template defined by you in `~/templates`, or generic one if a custom template is not defined. This is an Update `updater`, which can be run from the command line when Update is installed globally, or used as a building block for creating other updaters.",
+  "description": "Update or add a `.editorconfig` in the current working directory using a template defined by you in `~/templates`, or generic one if a custom template is not defined. This is an [Update] `updater`, which can be run from the command line when Update is installed globally, or used as a building block for creating other updaters.",
   "version": "0.2.0",
   "homepage": "https://github.com/update/updater-editorconfig",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
